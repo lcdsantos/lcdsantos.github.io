@@ -1,0 +1,123 @@
+@import 'normalize.css/normalize';
+
+html, body {
+  height: 100%;
+}
+
+html {
+  background: #3a3897;
+  background: linear-gradient(to top right, #3a3897 0%, #a3a1ff 100%) fixed;
+}
+
+body {
+  font-size: 100%;
+  font-family: 'Open Sans', sans-serif;
+  color: #FFF;
+}
+
+.container {
+  max-width: 960px;
+  margin: auto;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+a {
+  color: inherit;
+  font: inherit;
+  text-decoration: none;
+}
+
+.avatar {
+  width: 200px;
+  height: 200px;
+  margin: 20px auto 0;
+  border-radius: 50%;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
+
+  &__img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+    position: relative;
+    top: -2px;
+    left: -4px;
+  }
+
+  @media screen and (max-width: 64em) {
+    width: 140px;
+    height: 140px;
+  }
+}
+
+.info {
+  text-align: center;
+
+  &__name {
+    font-size: 72/16*1em;
+    font-weight: normal;
+    text-shadow: 0.5px 0.866px 2px rgba(0, 0, 0, 0.5);
+    margin-top: 30/72*1em;
+    margin-bottom: 20/72*1em;
+  }
+
+  &__desc {
+    font-size: 18/16*1em;
+    font-style: italic;
+  }
+
+  @media screen and (max-width: 64em) {
+    &__name {
+      font-size: 32/16*1em;
+      margin-top: 60/72*1em;
+    }
+
+    &__desc {
+      font-size: 12/16*1em;
+    }
+  }
+}
+
+.social {
+  text-align: center;
+  font-size: 0;
+  margin-top: 60px;
+  margin-bottom: 105px;
+
+  &__link {
+    display: inline-block;
+    vertical-align: middle;
+    zoom: 1;
+    *display: inline;
+    width: 60px;
+    height: 60px;
+    margin: 0 20px;
+    border-radius: 50%;
+    transition: 0.2s;
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.3);
+      box-shadow: 0 0 30px 0px rgba(0, 0, 0, 0.5);
+    }
+  }
+
+  &__icon {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  @media screen and (max-width: 64em) {
+    margin-top: 40px;
+
+    &__link {
+      width: 40px;
+      height: 40px;
+      margin: 0 10px;
+    }
+  }
+}
