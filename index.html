@@ -78,8 +78,11 @@
     </div>
   </main>
 
-  <script async src="assets/js/bundle.min.js"></script>
-  <noscript><link rel="stylesheet" href="assets/css/main.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i"></noscript>
+  <noscript id="deferred-styles">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i">
+  </noscript>
+  <script>(function(b,a){var d=function(){var c=b.getElementById("deferred-styles"),a=b.createElement("div");a.innerHTML=c.textContent;b.body.appendChild(a);c.parentElement.removeChild(c)},e=requestAnimationFrame||mozRequestAnimationFrame||webkitRequestAnimationFrame||msRequestAnimationFrame;e?e(function(){a.setTimeout(d,0)}):a.addEventListener("load",d)})(document,window);</script>
 
 </body>
 </html>
