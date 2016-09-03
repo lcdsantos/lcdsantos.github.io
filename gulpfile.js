@@ -5,7 +5,9 @@ var autoprefixer = require('gulp-autoprefixer');
 var browserify   = require('gulp-browserify');
 var uglify       = require('gulp-uglify');
 var svgmin       = require('gulp-svgmin');
+var svgstore     = require('gulp-svgstore');
 var browserSync  = require('browser-sync').create();
+var path         = require('path');
 
 gulp.task('sass', function() {
   return gulp.src(['./src/scss/main.scss'])
@@ -29,8 +31,19 @@ gulp.task('scripts', function() {
 });
 
 gulp.task('svg', function () {
-  return gulp.src('./src/img/**/*.svg')
-    .pipe(svgmin())
+  return gulp.src('./src/img/svgsprites/**/*.svg')
+    .pipe(svgmin(function(file) {
+      var prefix = path.basename(file.relative, path.extname(file.relative));
+      return {
+        plugins: [{
+          cleanupIDs: {
+            prefix: prefix + '-',
+            minify: true
+          }
+        }]
+      }
+    }))
+    .pipe(svgstore())
     .pipe(gulp.dest('./assets/img/'));
 });
 
@@ -39,9 +52,9 @@ gulp.task('serve', ['sass'], function() {
     server: './'
   });
 
-  gulp.watch('./src/scss/**/*.scss', ['sass']);
-  gulp.watch('./src/js/**/*.js',     ['scripts']);
-  gulp.watch('./src/img/**/*.svg',   ['svg']);
+  gulp.watch('**/*.scss', { cwd: './src/scss/' },           ['sass']);
+  gulp.watch('**/*.js',   { cwd: './src/js/' },             ['scripts']);
+  gulp.watch('**/*.svg',  { cwd: './src/img/svgsprites/' }, ['svg']);
   gulp.watch('*.html').on('change', browserSync.reload);
 });
 
