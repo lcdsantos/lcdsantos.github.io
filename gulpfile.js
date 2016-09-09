@@ -36,6 +36,7 @@ gulp.task('svg', function () {
       var prefix = path.basename(file.relative, path.extname(file.relative));
       return {
         plugins: [{
+          removeAttrs: { attrs : 'fill' },
           cleanupIDs: {
             prefix: prefix + '-',
             minify: true
